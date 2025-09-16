@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" width="100%" height="100%">
+  <defs>
+    <style>
+      .bone-bg { fill: #F2F0EB; }
+      .carbon-line { stroke: #1A1917; stroke-width: 1.5px; fill: none; }
+      .ash-line { stroke: #8A867D; stroke-width: 1px; stroke-dasharray: 4,4; fill: none; }
+      .label-head { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; fill: #1A1917; letter-spacing: 0.08em; text-transform: uppercase; }
+      .label-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #8A867D; letter-spacing: 0.1em; text-transform: uppercase; }
+    </style>
+  </defs>
+
+  <!-- Flat Bone Background -->
+  <rect width="1000" height="480" class="bone-bg"/>
+
+  <text x="50" y="45" class="label-head">PATTERN SHEET // N° 01 — COMMAND SECURITY GATEWAY</text>
+  <text x="950" y="45" class="label-tag" text-anchor="end">SPEC: 10 THREAT RULES · SHA-256</text>
+  <line x1="50" y1="60" x2="950" y2="60" stroke="#C8C5BE" stroke-width="1"/>
+
+  <!-- Node 1: AI Agent Command -->
+  <g transform="translate(50, 180)">
+    <path d="M 0,15 L 0,0 L 15,0" class="carbon-line"/>
+    <path d="M 165,80 L 180,80 L 180,65" class="carbon-line"/>
+    <path d="M 180,15 L 180,0 L 165,0" class="carbon-line"/>
+    <path d="M 0,65 L 0,80 L 15,80" class="carbon-line"/>
+
+    <text x="90" y="34" class="label-head" text-anchor="middle">AI AGENT</text>
+    <text x="90" y="52" class="label-tag" text-anchor="middle">TOOL EXECUTION</text>
+    <text x="90" y="66" class="label-tag" text-anchor="middle">[ UNTRUSTED ]</text>
+  </g>
+
+  <line x1="230" y1="220" x2="310" y2="220" class="carbon-line"/>
+  <polygon points="310,220 300,215 300,225" fill="#1A1917"/>
+
+  <!-- Node 2: AST Scanner -->
+  <g transform="translate(310, 180)">
+    <path d="M 0,15 L 0,0 L 15,0" class="carbon-line"/>
+    <path d="M 185,80 L 200,80 L 200,65" class="carbon-line"/>
+    <path d="M 200,15 L 200,0 L 185,0" class="carbon-line"/>
+    <path d="M 0,65 L 0,80 L 15,80" class="carbon-line"/>
+
+    <text x="100" y="34" class="label-head" text-anchor="middle">AST SCANNER</text>
+    <text x="100" y="52" class="label-tag" text-anchor="middle">10 THREAT PATTERNS</text>
+    <text x="100" y="66" class="label-tag" text-anchor="middle">ROOT / IMDS / EXFIL</text>
+  </g>
+
+  <line x1="510" y1="220" x2="590" y2="220" class="carbon-line"/>
+  <polygon points="590,220 580,215 580,225" fill="#1A1917"/>
+
+  <!-- Node 3: Policy Engine -->
+  <g transform="translate(590, 180)">
+    <path d="M 0,15 L 0,0 L 15,0" class="carbon-line"/>
+    <path d="M 165,80 L 180,80 L 180,65" class="carbon-line"/>
+    <path d="M 180,15 L 180,0 L 165,0" class="carbon-line"/>
+    <path d="M 0,65 L 0,80 L 15,80" class="carbon-line"/>
+
+    <text x="90" y="34" class="label-head" text-anchor="middle">POLICY ENGINE</text>
+    <text x="90" y="52" class="label-tag" text-anchor="middle">STRICT_CI / PERMIT</text>
+    <text x="90" y="66" class="label-tag" text-anchor="middle">DRY-RUN GATEWAY</text>
+  </g>
+
+  <line x1="770" y1="220" x2="850" y2="220" class="carbon-line"/>
+  <polygon points="850,220 840,215 840,225" fill="#1A1917"/>
+
+  <!-- Node 4: Cryptographic Audit -->
+  <g transform="translate(850, 180)">
+    <path d="M 0,15 L 0,0 L 15,0" class="carbon-line"/>
+    <path d="M 115,80 L 130,80 L 130,65" class="carbon-line"/>
+    <path d="M 130,15 L 130,0 L 115,0" class="carbon-line"/>
+    <path d="M 0,65 L 0,80 L 15,80" class="carbon-line"/>
+
+    <text x="65" y="34" class="label-head" text-anchor="middle">SHA-256</text>
+    <text x="65" y="52" class="label-tag" text-anchor="middle">HASH CHAIN</text>
+    <text x="65" y="66" class="label-tag" text-anchor="middle">IMMUTABLE</text>
+  </g>
+
+  <!-- Pattern Cutting Seam Marks (Bottom) -->
+  <g transform="translate(50, 420)">
+    <line x1="0" y1="0" x2="900" y2="0" class="ash-line"/>
+    <text x="0" y="25" class="label-tag">SECURITY INVARIANT // DETERMINISTIC SCAN BEFORE DISPATCH</text>
+    <text x="450" y="25" class="label-tag" text-anchor="middle">ADVERSARIAL LIMITATION: STATIC BOUNDARY</text>
+    <text x="900" y="25" class="label-tag" text-anchor="end">LOT: 2026-SEC</text>
+  </g>
+</svg>

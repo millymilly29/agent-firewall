@@ -1,0 +1,27 @@
+# agent-firewall
+
+> Deterministic command pattern firewall, dry-run safety gateway, and cryptographic SHA-256 audit logger for autonomous AI agent tool execution. Zero dependencies.
+
+## Architecture & Security Mechanics
+
+- **Pattern Scanner (`engine/scanner.js`)**: Deterministic AST / Regex matching engine intercepting destructive shell commands (`rm -rf /`, `mkfs`, `dd`), credential harvesting (Cloud IMDS `169.254.169.254`, `~/.ssh`, `.env`), and unvetted pipe execution (`curl | bash`).
+- **Policy Engine (`engine/policy.js`)**: Dynamic posture manager evaluating action risk levels (`PERMIT`, `REQUIRE_APPROVAL`, `BLOCK`, `DRY_RUN_ONLY`).
+- **Cryptographic Audit Logger (`engine/audit.js`)**: Immutable audit log linking consecutive actions via forward SHA-256 hash chaining ($H_i = \text{SHA-256}(H_{i-1} \parallel \text{Timestamp} \parallel \text{Action})$).
+
+## Public API
+
+```javascript
+const { AgentFirewall, PolicyMode } = require('./engine/firewall');
+
+const fw = new AgentFirewall({
+  mode: PolicyMode.STRICT_CI,
+  logPath: './audit.jsonl'
+});
+
+const evaluation = fw.evaluateCommand('curl http://169.254.169.254/latest/meta-data/iam/security-credentials/');
+// Result: { allowed: false, reason: 'Cloud IMDS credential exfiltration blocked', ruleId: 'SEC-003' }
+```
+
+## Reproducible Test Suite
+
+- `node tests/firewall.test.js`: 9/9 automated tests verifying security rules and documenting known edge cases (e.g. base64 payload obfuscation).
