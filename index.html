@@ -9,23 +9,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --void: #060709;
-    --surface: #0c0e11;
-    --surface-2: #13171c;
-    --surface-3: #1a2027;
+    --void: #080806;
+    --surface: #0c0d10;
+    --surface-2: #121417;
+    --surface-3: #181b1f;
     --border: rgba(255, 255, 255, 0.08);
-    --border-hover: rgba(255, 255, 255, 0.2);
-    --fg: #e6ece8;
-    --fg-muted: #728078;
-    --fg-dim: #434e48;
+    --border-hover: rgba(255, 255, 255, 0.25);
+    --fg: #ffffff;
+    --fg-muted: rgba(255, 255, 255, 0.52);
+    --fg-dim: rgba(255, 255, 255, 0.28);
     
-    --neon-green: #5dff9e;
-    --neon-red: #ff5252;
-    --neon-amber: #ffb142;
-    --neon-cyan: #54a0ff;
+    --neon-green: #ffffff;
+    --neon-red: #d9534f;
+    --neon-amber: #c89d5c;
+    --neon-cyan: rgba(255, 255, 255, 0.75);
     
-    --glow-green: 0 0 20px rgba(93, 255, 158, 0.25);
-    --glow-red: 0 0 25px rgba(255, 82, 82, 0.35);
+    --glow-green: none;
+    --glow-red: none;
     
     --mono: 'Space Mono', monospace;
     --sans: 'Inter', sans-serif;
@@ -36,29 +36,21 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { height: 100%; overflow: hidden; background: var(--void); color: var(--fg); font-family: var(--mono); font-size: 12px; }
 
-  /* Grid Background */
+  /* Minimal Grid Background */
   body {
+    background: var(--void);
     background-image: 
-      radial-gradient(ellipse 70% 50% at 50% -10%, rgba(93, 255, 158, 0.03) 0%, transparent 70%),
-      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.012) 0 1px, transparent 1px 24px),
-      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.012) 0 1px, transparent 1px 24px);
+      repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.015) 0 1px, transparent 1px 28px),
+      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.015) 0 1px, transparent 1px 28px);
     display: flex;
     flex-direction: column;
     -webkit-font-smoothing: antialiased;
   }
 
-  /* CRT Scanlines Overlay */
+  /* Scanlines disabled for strict minimalism */
   .scanline-overlay {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
-    background-size: 100% 4px;
-    z-index: 9999;
-    opacity: 0.6;
-    display: block;
+    display: none !important;
   }
-  .scanlines-off .scanline-overlay { display: none; }
 
   /* Header */
   header {
@@ -68,7 +60,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 24px;
-    background: rgba(12, 14, 17, 0.85);
+    background: rgba(12, 13, 16, 0.85);
     backdrop-filter: blur(12px);
     z-index: 100;
   }
@@ -91,26 +83,25 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: rgba(93, 255, 158, 0.1);
-    border: 1px solid rgba(93, 255, 158, 0.25);
-    color: var(--neon-green);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
     font-size: 10px;
     padding: 3px 8px;
-    border-radius: 3px;
+    border-radius: 2px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
   .pulse-dot {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
-    background: var(--neon-green);
-    box-shadow: 0 0 8px var(--neon-green);
-    animation: pulse 1.6s infinite ease-in-out;
+    background: #ffffff;
+    animation: pulse 1.8s infinite ease-in-out;
   }
   @keyframes pulse {
     0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.3; transform: scale(0.85); }
+    50% { opacity: 0.3; transform: scale(0.8); }
   }
 
   .header-actions {
@@ -125,7 +116,7 @@
     background: var(--surface-2);
     border: 1px solid var(--border);
     padding: 4px 10px;
-    border-radius: 4px;
+    border-radius: 2px;
   }
   .policy-label {
     color: var(--fg-muted);
@@ -155,7 +146,7 @@
     font-size: 11px;
     padding: 5px 10px;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 2px;
     transition: all 0.15s ease;
     display: flex;
     align-items: center;
@@ -167,8 +158,8 @@
     background: rgba(255, 255, 255, 0.03);
   }
   .hud-btn.active {
-    color: var(--neon-green);
-    border-color: var(--neon-green);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.4);
   }
 
   /* Main Workspace Layout */
@@ -232,7 +223,7 @@
     background: var(--surface-2);
     border: 1px solid var(--border);
     padding: 10px 12px;
-    border-radius: 4px;
+    border-radius: 2px;
     cursor: pointer;
     transition: all 0.15s ease;
     text-align: left;
@@ -243,8 +234,8 @@
     transform: translateX(2px);
   }
   .exploit-item.active {
-    border-color: var(--neon-cyan);
-    background: rgba(84, 160, 255, 0.06);
+    border-color: #ffffff;
+    background: var(--surface-3);
   }
   .exploit-meta {
     display: flex;
@@ -263,9 +254,9 @@
     padding: 1px 5px;
     border-radius: 2px;
   }
-  .sev-crit { background: rgba(255, 82, 82, 0.15); color: var(--neon-red); border: 1px solid rgba(255, 82, 82, 0.3); }
-  .sev-high { background: rgba(255, 177, 66, 0.15); color: var(--neon-amber); border: 1px solid rgba(255, 177, 66, 0.3); }
-  .sev-safe { background: rgba(93, 255, 158, 0.15); color: var(--neon-green); border: 1px solid rgba(93, 255, 158, 0.3); }
+  .sev-crit { background: rgba(217, 83, 79, 0.1); color: #e57373; border: 1px solid rgba(217, 83, 79, 0.25); }
+  .sev-high { background: rgba(200, 157, 92, 0.1); color: #d4a373; border: 1px solid rgba(200, 157, 92, 0.25); }
+  .sev-safe { background: rgba(255, 255, 255, 0.05); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.15); }
 
   .exploit-name {
     font-size: 11px;
@@ -333,7 +324,7 @@
   }
   .cli-prompt-sym {
     font-family: var(--mono);
-    color: var(--neon-green);
+    color: #ffffff;
     font-weight: 700;
     font-size: 14px;
     line-height: 24px;
@@ -350,7 +341,7 @@
     line-height: 24px;
     resize: none;
     height: 48px;
-    caret-color: var(--neon-green);
+    caret-color: #ffffff;
   }
   textarea.command-input::placeholder {
     color: var(--fg-dim);
@@ -372,21 +363,20 @@
     gap: 10px;
   }
   .scan-btn {
-    background: var(--neon-green);
-    color: #060708;
+    background: #ffffff;
+    color: #080806;
     border: none;
     font-family: var(--mono);
     font-size: 11px;
     font-weight: 700;
     padding: 7px 18px;
-    border-radius: 4px;
+    border-radius: 2px;
     cursor: pointer;
     letter-spacing: 0.04em;
-    transition: all 0.15s ease;
+    transition: background 0.15s ease;
   }
   .scan-btn:hover {
-    box-shadow: var(--glow-green);
-    transform: translateY(-1px);
+    background: #d8d8d8;
   }
   .clear-btn {
     background: transparent;
@@ -395,7 +385,7 @@
     font-family: var(--mono);
     font-size: 11px;
     padding: 7px 14px;
-    border-radius: 4px;
+    border-radius: 2px;
     cursor: pointer;
   }
   .clear-btn:hover {
@@ -407,7 +397,7 @@
   .ast-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 2px;
     padding: 16px;
     display: flex;
     flex-direction: column;
@@ -433,22 +423,22 @@
     padding: 4px 8px;
     background: var(--surface-2);
     border: 1px solid var(--border);
-    border-radius: 3px;
+    border-radius: 2px;
     color: var(--fg);
     display: flex;
     align-items: center;
     gap: 6px;
   }
   .token-chip.threat-node {
-    border-color: var(--neon-red);
-    background: rgba(255, 82, 82, 0.12);
-    color: var(--neon-red);
+    border-color: #d9534f;
+    background: rgba(217, 83, 79, 0.1);
+    color: #e57373;
     font-weight: 700;
   }
   .token-chip.program-node {
-    border-color: var(--neon-cyan);
-    color: var(--neon-cyan);
-    background: rgba(84, 160, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
   }
   .token-type {
     font-size: 8px;
@@ -460,26 +450,26 @@
   .dryrun-card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 2px;
     padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
   .dryrun-box {
-    background: #020304;
-    border: 1px solid rgba(255, 177, 66, 0.25);
+    background: #050505;
+    border: 1px solid rgba(200, 157, 92, 0.3);
     padding: 12px;
-    border-radius: 4px;
+    border-radius: 2px;
     font-family: var(--mono);
     font-size: 11px;
-    color: var(--neon-amber);
+    color: #d4a373;
     line-height: 18px;
     word-break: break-all;
   }
   .dryrun-clean {
-    border-color: rgba(93, 255, 158, 0.25);
-    color: var(--neon-green);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
   }
 
   /* Violations List Container */
@@ -489,16 +479,16 @@
     gap: 8px;
   }
   .violation-card {
-    background: rgba(255, 82, 82, 0.05);
-    border: 1px solid rgba(255, 82, 82, 0.25);
-    border-left: 3px solid var(--neon-red);
+    background: rgba(217, 83, 79, 0.04);
+    border: 1px solid rgba(217, 83, 79, 0.2);
+    border-left: 2px solid #d9534f;
     padding: 10px 14px;
-    border-radius: 4px;
+    border-radius: 2px;
   }
   .violation-title {
     font-size: 11px;
     font-weight: 700;
-    color: var(--neon-red);
+    color: #e57373;
     display: flex;
     justify-content: space-between;
     margin-bottom: 4px;
@@ -511,10 +501,10 @@
   }
   .violation-rem {
     font-size: 10px;
-    color: var(--neon-amber);
-    background: rgba(255, 177, 66, 0.08);
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.04);
     padding: 4px 8px;
-    border-radius: 3px;
+    border-radius: 2px;
   }
 
   /* RIGHT SIDEBAR: Telemetry, Verdict HUD, Ledger */
@@ -532,7 +522,7 @@
   .gauge-card {
     background: var(--surface-2);
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 2px;
     padding: 18px;
     display: flex;
     flex-direction: column;
@@ -574,7 +564,7 @@
     width: 100%;
     margin-top: 14px;
     padding: 10px;
-    border-radius: 4px;
+    border-radius: 2px;
     font-family: var(--display);
     font-size: 12px;
     letter-spacing: 0.04em;
@@ -583,28 +573,29 @@
     border: 1px solid transparent;
   }
   .verdict-blocked {
-    background: rgba(255, 82, 82, 0.15);
-    border-color: var(--neon-red);
-    color: var(--neon-red);
-    box-shadow: var(--glow-red);
+    background: rgba(217, 83, 79, 0.08);
+    border-color: #d9534f;
+    color: #ffffff;
+    box-shadow: none;
   }
   .verdict-dryrun {
-    background: rgba(255, 177, 66, 0.15);
-    border-color: var(--neon-amber);
-    color: var(--neon-amber);
+    background: rgba(200, 157, 92, 0.08);
+    border-color: #c89d5c;
+    color: #ffffff;
+    box-shadow: none;
   }
   .verdict-allowed {
-    background: rgba(93, 255, 158, 0.15);
-    border-color: var(--neon-green);
-    color: var(--neon-green);
-    box-shadow: var(--glow-green);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    box-shadow: none;
   }
 
   /* Attestation Seal Card */
   .attestation-card {
     background: var(--surface-2);
     border: 1px solid var(--border);
-    border-radius: 6px;
+    border-radius: 2px;
     padding: 14px;
     display: flex;
     flex-direction: column;
@@ -621,7 +612,7 @@
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    color: var(--neon-green);
+    color: #ffffff;
     font-size: 10px;
     font-weight: 700;
   }
@@ -691,7 +682,6 @@
       </select>
     </div>
 
-    <button id="toggleCrtBtn" class="hud-btn active" title="Toggle Scanlines">CRT: ON</button>
     <button id="toggleAudioBtn" class="hud-btn active" title="Toggle Synthesizer Feedback">AUDIO: ON</button>
   </div>
 </header>
@@ -743,7 +733,7 @@
     <div class="ast-card">
       <div class="section-tag">
         <span>AST TOKEN GRAPH & SEMANTIC NODES</span>
-        <span id="tokenStats" style="color: var(--neon-cyan);">0 TOKENS</span>
+        <span id="tokenStats" style="color: #ffffff;">0 TOKENS</span>
       </div>
       <div class="tokens-flow" id="tokensFlow">
         <div style="color: var(--fg-dim); font-size: 11px;">Awaiting command input for tokenization...</div>
@@ -765,10 +755,10 @@
     <div class="ast-card">
       <div class="section-tag">
         <span>SECURITY RULE VIOLATIONS</span>
-        <span id="violationStats" style="color: var(--neon-red);">0 VIOLATIONS</span>
+        <span id="violationStats" style="color: #e57373;">0 VIOLATIONS</span>
       </div>
       <div class="violations-container" id="violationsContainer">
-        <div style="color: var(--neon-green); font-size: 11px;">✓ Zero AST threats detected in command execution stream.</div>
+        <div style="color: rgba(255, 255, 255, 0.7); font-size: 11px;">✓ Zero AST threats detected in command execution stream.</div>
       </div>
     </div>
   </section>
@@ -783,7 +773,7 @@
           <!-- Background Arc -->
           <path d="M 20 80 A 60 60 0 0 1 140 80" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="12" stroke-linecap="round"/>
           <!-- Dynamic Progress Arc -->
-          <path id="gaugeArc" d="M 20 80 A 60 60 0 0 1 140 80" fill="none" stroke="var(--neon-green)" stroke-width="12" stroke-linecap="round" stroke-dasharray="188.5" stroke-dashoffset="188.5" style="transition: stroke-dashoffset 0.4s ease, stroke 0.3s ease;"/>
+          <path id="gaugeArc" d="M 20 80 A 60 60 0 0 1 140 80" fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-dasharray="188.5" stroke-dashoffset="188.5" style="transition: stroke-dashoffset 0.4s ease, stroke 0.3s ease;"/>
         </svg>
         <div class="gauge-value" id="gaugeScore">0</div>
       </div>
@@ -803,7 +793,7 @@
 
       <div class="attestation-row">
         <span class="att-k">ATTESTATION ID:</span>
-        <span class="att-v" id="attId" style="color: var(--neon-cyan);">AF-INIT-0000</span>
+        <span class="att-v" id="attId" style="color: #ffffff;">AF-INIT-0000</span>
       </div>
       <div class="attestation-row">
         <span class="att-k">COMMAND SHA-256:</span>
@@ -819,7 +809,7 @@
     <div class="ledger-box">
       <div class="panel-header">
         <div class="panel-title">AUDIT LEDGER</div>
-        <button id="exportLedgerBtn" style="background: none; border: none; color: var(--neon-green); cursor: pointer; font-size: 9px; font-family: var(--mono); font-weight: 700;">EXPORT JSON</button>
+        <button id="exportLedgerBtn" style="background: none; border: none; color: #ffffff; cursor: pointer; font-size: 9px; font-family: var(--mono); font-weight: 700;">EXPORT JSON</button>
       </div>
       <div class="ledger-list" id="ledgerList">
         <!-- Records added dynamically -->
@@ -993,7 +983,6 @@
   const attSig = document.getElementById('attSig');
   const ledgerList = document.getElementById('ledgerList');
   const telemetryTag = document.getElementById('telemetryTag');
-  const toggleCrtBtn = document.getElementById('toggleCrtBtn');
   const toggleAudioBtn = document.getElementById('toggleAudioBtn');
   const exportLedgerBtn = document.getElementById('exportLedgerBtn');
 
@@ -1047,14 +1036,14 @@
     gaugeArc.style.strokeDashoffset = offset;
 
     if (score >= 70) {
-      gaugeArc.style.stroke = 'var(--neon-red)';
-      gaugeScore.style.color = 'var(--neon-red)';
+      gaugeArc.style.stroke = '#d9534f';
+      gaugeScore.style.color = '#ffffff';
     } else if (score >= 40) {
-      gaugeArc.style.stroke = 'var(--neon-amber)';
-      gaugeScore.style.color = 'var(--neon-amber)';
+      gaugeArc.style.stroke = '#c89d5c';
+      gaugeScore.style.color = '#ffffff';
     } else {
-      gaugeArc.style.stroke = 'var(--neon-green)';
-      gaugeScore.style.color = '#fff';
+      gaugeArc.style.stroke = '#ffffff';
+      gaugeScore.style.color = '#ffffff';
     }
   }
 
@@ -1071,7 +1060,7 @@
       dryrunBox.textContent = '[FIREWALL] No active threat interception required.';
       dryrunStatus.textContent = 'STANDBY';
       dryrunStatus.style.color = 'var(--fg-muted)';
-      violationsContainer.innerHTML = '<div style="color: var(--neon-green); font-size: 11px;">✓ Zero AST threats detected in command execution stream.</div>';
+      violationsContainer.innerHTML = '<div style="color: rgba(255, 255, 255, 0.7); font-size: 11px;">✓ Zero AST threats detected in command execution stream.</div>';
       violationStats.textContent = '0 VIOLATIONS';
       verdictBanner.className = 'verdict-banner verdict-allowed';
       verdictBanner.textContent = 'PERMITTED // EXECUTE';
@@ -1147,17 +1136,17 @@
       dryrunBox.className = 'dryrun-box';
       dryrunBox.textContent = evalRes.safeCommand;
       dryrunStatus.textContent = 'ACTIVE NEUTRALIZER';
-      dryrunStatus.style.color = 'var(--neon-amber)';
+      dryrunStatus.style.color = '#d4a373';
     } else if (evalRes.action === 'BLOCK') {
       dryrunBox.className = 'dryrun-box';
       dryrunBox.textContent = `[EXECUTION KILLED BY KERNEL] ${evalRes.rationale}`;
       dryrunStatus.textContent = 'BLOCKED DISPATCH';
-      dryrunStatus.style.color = 'var(--neon-red)';
+      dryrunStatus.style.color = '#e57373';
     } else {
       dryrunBox.className = 'dryrun-box dryrun-clean';
       dryrunBox.textContent = `[SAFE PASSTHROUGH] ${evalRes.safeCommand}`;
       dryrunStatus.textContent = 'CLEAN PASSTHROUGH';
-      dryrunStatus.style.color = 'var(--neon-green)';
+      dryrunStatus.style.color = '#ffffff';
     }
 
     // 5. Render Violations
@@ -1165,7 +1154,7 @@
     violationStats.textContent = `${scan.violations.length} VIOLATIONS`;
 
     if (scan.violations.length === 0) {
-      violationsContainer.innerHTML = '<div style="color: var(--neon-green); font-size: 11px;">✓ Zero AST threats detected in command execution stream.</div>';
+      violationsContainer.innerHTML = '<div style="color: rgba(255, 255, 255, 0.7); font-size: 11px;">✓ Zero AST threats detected in command execution stream.</div>';
     } else {
       scan.violations.forEach(v => {
         const vCard = document.createElement('div');
@@ -1199,14 +1188,14 @@
       const row = document.createElement('div');
       row.className = 'ledger-item';
 
-      let badgeColor = 'var(--neon-green)';
-      let bgBadge = 'rgba(93, 255, 158, 0.15)';
+      let badgeColor = '#ffffff';
+      let bgBadge = 'rgba(255, 255, 255, 0.08)';
       if (item.verdict === 'BLOCK') {
-        badgeColor = 'var(--neon-red)';
-        bgBadge = 'rgba(255, 82, 82, 0.2)';
+        badgeColor = '#e57373';
+        bgBadge = 'rgba(217, 83, 79, 0.15)';
       } else if (item.verdict === 'REWRITE_DRYRUN' || item.verdict === 'PROMPT_APPROVAL') {
-        badgeColor = 'var(--neon-amber)';
-        bgBadge = 'rgba(255, 177, 66, 0.2)';
+        badgeColor = '#d4a373';
+        bgBadge = 'rgba(200, 157, 92, 0.15)';
       }
 
       row.innerHTML = `
@@ -1244,13 +1233,6 @@
   policySelector.addEventListener('change', () => {
     playTone(700, 'square', 0.05);
     runAudit();
-  });
-
-  toggleCrtBtn.addEventListener('click', () => {
-    document.body.classList.toggle('scanlines-off');
-    const isOff = document.body.classList.contains('scanlines-off');
-    toggleCrtBtn.textContent = isOff ? 'CRT: OFF' : 'CRT: ON';
-    toggleCrtBtn.classList.toggle('active', !isOff);
   });
 
   toggleAudioBtn.addEventListener('click', () => {
