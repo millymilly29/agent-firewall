@@ -1,15 +1,25 @@
-# AGENT-FIREWALL // Semantic Command Lexer & AST Threat Gateway
+# AGENT-FIREWALL
+### Semantic Command Lexer & AST Threat Gateway
 
 <p align="center">
-  <img src="screenshot.png" alt="AGENT-FIREWALL Dashboard" width="100%" />
+  <img src="screenshot.png" alt="AGENT-FIREWALL Studio" width="100%" />
 </p>
 
 <p align="center">
-  <a href="https://github.com/millymilly29/agent-firewall/actions"><img src="https://img.shields.io/badge/tests-15%20passed-00ff9d?style=for-the-badge&logo=vitest&logoColor=black" alt="Tests"></a>
-  <img src="https://img.shields.io/badge/security-10%20Threat%20Classes-ff2a85?style=for-the-badge" alt="Security Rules">
-  <img src="https://img.shields.io/badge/attestation-SHA--256%20Sealed-00f0ff?style=for-the-badge" alt="SHA-256">
-  <img src="https://img.shields.io/badge/dependencies-0%20(zero--dep)-white?style=for-the-badge" alt="Zero Dependencies">
-  <img src="https://img.shields.io/badge/license-MIT-white?style=for-the-badge" alt="License">
+  <a href="https://millymilly29.github.io/agent-firewall.html"><img src="https://img.shields.io/badge/demo-live%20studio-080806?style=flat-square&labelColor=161616" alt="Live Studio"></a>
+  <a href="https://github.com/millymilly29/agent-firewall/actions"><img src="https://img.shields.io/badge/tests-15%20passed-080806?style=flat-square&labelColor=161616" alt="Tests"></a>
+  <img src="https://img.shields.io/badge/rules-10%20threat%20classes-080806?style=flat-square&labelColor=161616" alt="Threat Classes">
+  <img src="https://img.shields.io/badge/attestation-sha--256%20sealed-080806?style=flat-square&labelColor=161616" alt="SHA-256">
+  <img src="https://img.shields.io/badge/runtime-zero%20dependencies-080806?style=flat-square&labelColor=161616" alt="Zero Dependencies">
+  <img src="https://img.shields.io/badge/license-MIT-080806?style=flat-square&labelColor=161616" alt="License">
+</p>
+
+<p align="center">
+  <a href="https://millymilly29.github.io/agent-firewall.html"><strong>Live Interactive Studio ↗</strong></a> &nbsp;·&nbsp;
+  <a href="https://millymilly29.github.io/portfolio/agent-firewall.html">Case Study ↗</a> &nbsp;·&nbsp;
+  <a href="#threat-classes-monitored">Threat Rules</a> &nbsp;·&nbsp;
+  <a href="#policy-profiles">Policy Matrix</a> &nbsp;·&nbsp;
+  <a href="#quick-start--verification">Quickstart</a>
 </p>
 
 > **Zero-Trust Autonomous Boundary & Policy Enforcement Engine for AI Agent Execution Sandboxes.**  
@@ -26,14 +36,14 @@
                    │
          ┌─────────┴─────────┐
          ▼                   ▼
-  ❌ THREAT DETECTED    ✅ VERIFIED SAFE
-   - Block Execution    - Sign SHA-256 Attestation
-   - Apply Safe Dry-Run - Execute in Isolated Container
+  THREAT DETECTED       VERIFIED SAFE
+   - Block Execution     - Sign SHA-256 Attestation
+   - Apply Safe Dry-Run  - Execute in Isolated Container
 ```
 
 ---
 
-## ⚡ The Threat Landscape: Why Agents Need Firewalls
+## Problem Space & Motivation: The Autonomous Execution Threat
 
 Autonomous agents executing shell commands possess inherent security liabilities:
 1. **Prompt Injection Egress:** Malicious indirect instructions in scraped documents or PRs instructing the agent to exfiltrate `.env`, SSH keys, or cloud credentials.
@@ -46,7 +56,7 @@ Autonomous agents executing shell commands possess inherent security liabilities
 
 ---
 
-## 🛡️ 10 Threat Classes Monitored
+## Threat Classes Monitored
 
 | Rule ID | Threat Category | Severity | Detection Vector |
 | :--- | :--- | :---: | :--- |
@@ -63,7 +73,7 @@ Autonomous agents executing shell commands possess inherent security liabilities
 
 ---
 
-## 🔒 Policy Profiles
+## Policy Profiles
 
 - **`PARANOID`:** Zero-tolerance boundary. Any risk score > 0 is blocked or redirected to a non-destructive dry-run simulation. Outbound network traffic is completely disabled.
 - **`STRICT_CI`:** Default CI/CD profile. High-severity threats (>= 70) are blocked/dry-run rewritten. Suspicious operations (40-69) are quarantined. Outbound network allowed only for vetted package managers.
@@ -72,9 +82,9 @@ Autonomous agents executing shell commands possess inherent security liabilities
 
 ---
 
-## 🚀 Quick Start
+## Quick Start & Verification
 
-### 1. Clone & Run Verification Suite
+### 1. Clone & Run Test Suite (Zero Dependencies Required)
 
 ```bash
 git clone https://github.com/millymilly29/agent-firewall.git
@@ -96,7 +106,7 @@ Open `index.html` directly in any modern browser:
 
 ---
 
-## 💻 CLI Commands
+## CLI Commands
 
 ```bash
 # Enforce PARANOID policy on catastrophic wipe
@@ -111,7 +121,7 @@ node cli.js --help
 
 ---
 
-## 🔌 Programmatic Integration
+## Programmatic Integration
 
 ```javascript
 const { ASTCommandScanner } = require('./engine/ast-scanner');
@@ -137,6 +147,6 @@ console.log('SHA-256 Attestation:', seal.hash);
 
 ---
 
-## 📄 License
+## License
 
 MIT © [Kirill Tsyganov](mailto:millyrock2900@gmail.com)
