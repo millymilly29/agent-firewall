@@ -1,0 +1,37 @@
+{
+  "name": "agent-firewall",
+  "version": "1.0.0",
+  "description": "Zero-Trust AST Command Firewall, Threat Gateway & Cryptographic Attestation Sandbox for Autonomous AI Agents",
+  "main": "engine/index.js",
+  "bin": {
+    "agent-firewall": "./cli.js"
+  },
+  "scripts": {
+    "test": "node tests/firewall.test.js",
+    "scan": "node cli.js"
+  },
+  "keywords": [
+    "ai-agents",
+    "devsecops",
+    "ast-parser",
+    "shell-security",
+    "sandbox",
+    "sha-256",
+    "prompt-injection",
+    "imds-protection",
+    "zero-trust"
+  ],
+  "author": "Kirill Tsyganov <millyrock2900@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/millymilly29/agent-firewall.git"
+  },
+  "bugs": {
+    "url": "https://github.com/millymilly29/agent-firewall/issues"
+  },
+  "homepage": "https://github.com/millymilly29/agent-firewall#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
