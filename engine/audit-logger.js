@@ -99,14 +99,18 @@ class AuditLogger {
   }
 
   /**
-   * Generates a signed tamper-evident security attestation record
+   * Generates a SHA-256-chained audit log record.
+   * NOTE: This is a hash chain (each record hashes its own payload), NOT
+   * a cryptographic signature — there is no private key involved.
+   * Tamper-evidence: altering any field will invalidate the stored signature.
    */
   createAttestation(command, verdict, policy, riskScore, violations = []) {
     const timestamp = new Date().toISOString();
     const commandHash = computeDigest(command);
     const payload = `${timestamp}|${commandHash}|${verdict}|${policy}|${riskScore}`;
-    const signature = computeDigest(payload);
-    const attestationId = `AF-${signature.substring(0, 12).toUpperCase()}`;
+    const auditHash = computeDigest(payload);
+    const attestationId = `AF-${auditHash.substring(0, 12).toUpperCase()}`;
+    const signature = auditHash; // kept as 'signature' for backward compat
 
     const record = {
       attestationId,

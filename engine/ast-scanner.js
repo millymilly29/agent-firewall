@@ -1,5 +1,5 @@
 /**
- * AGENT-FIREWALL // Semantic Command Lexer & AST Threat Scanner
+ * AGENT-FIREWALL // Regex-Based Command Pattern Scanner
  * Intercepts, parses, and audits commands emitted by autonomous AI agents before execution.
  */
 
@@ -96,13 +96,13 @@ const THREAT_RULES = [
   }
 ];
 
-class ASTCommandScanner {
+class CommandPatternScanner {
   constructor() {
     this.rules = THREAT_RULES;
   }
 
   /**
-   * Tokenizes raw shell string into semantic chunks
+   * Tokenizes raw shell string into word tokens (basic lexer, not a full AST parser)
    */
   tokenize(rawCommand) {
     if (!rawCommand || typeof rawCommand !== 'string') {
@@ -135,7 +135,9 @@ class ASTCommandScanner {
   }
 
   /**
-   * Performs static analysis and security score computation
+   * Matches tokenized command against regex threat rules.
+   * NOTE: Detection operates on the raw string, not a parsed syntax tree.
+   * This means obfuscation (base64, variable indirection, unicode) can bypass rules.
    */
   scan(commandString) {
     const parsed = this.tokenize(commandString);
@@ -190,10 +192,11 @@ class ASTCommandScanner {
 }
 
 if (typeof window !== 'undefined') {
-  window.ASTCommandScanner = ASTCommandScanner;
+  window.CommandPatternScanner = CommandPatternScanner
+  window.ASTCommandScanner = CommandPatternScanner // backward compat alias;
   window.THREAT_RULES = THREAT_RULES;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { ASTCommandScanner, THREAT_RULES };
+  module.exports = { CommandPatternScanner, ASTCommandScanner: CommandPatternScanner, THREAT_RULES };
 }

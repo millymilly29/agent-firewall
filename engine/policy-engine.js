@@ -6,8 +6,8 @@
 const POLICIES = {
   PARANOID: {
     id: 'PARANOID',
-    name: 'Zero-Trust Autonomous Boundary',
-    description: 'Zero tolerance for network egress or filesystem mutations. Any risk score > 0 is blocked or converted to simulation.',
+    name: 'Maximum Restriction (Block-All) Boundary',
+    description: 'Highest restriction posture. Blocks any command with a non-zero risk score. Not a zero-trust architecture — a conservative threshold policy.',
     blockThreshold: 30,
     quarantineThreshold: 1,
     allowOutboundNetwork: false,
