@@ -1,19 +1,18 @@
 {
   "name": "agent-firewall",
   "version": "1.0.0",
-  "description": "Zero-Trust AST Command Firewall, Threat Gateway & Cryptographic Attestation Sandbox for Autonomous AI Agents",
+  "description": "A first-line regex-based command gate for AI agents with SHA-256 hash-chained audit logging",
   "main": "engine/index.js",
   "bin": {
     "agent-firewall": "./cli.js"
   },
   "scripts": {
-    "test": "node tests/firewall.test.js",
+    "test": "node tests/firewall.test.js && node tests/chain.test.js",
     "scan": "node cli.js"
   },
   "keywords": [
     "ai-agents",
     "devsecops",
-    "ast-parser",
     "shell-security",
     "sandbox",
     "sha-256",
@@ -21,7 +20,7 @@
     "imds-protection",
     "zero-trust"
   ],
-  "author": "Kirill Tsyganov <millyrock2900@gmail.com>",
+  "author": "Kirill Tsyganov <https://t.me/therealfullmetal>",
   "license": "MIT",
   "repository": {
     "type": "git",

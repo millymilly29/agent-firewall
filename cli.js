@@ -2,7 +2,7 @@
 
 /**
  * AGENT-FIREWALL // Terminal CLI Inspector
- * Semantic AST firewall and security gatekeeper for autonomous AI agent command execution.
+ * Regex-based command pattern firewall and security gatekeeper for autonomous AI agent command execution.
  */
 
 const { ASTCommandScanner } = require('./engine/ast-scanner');
@@ -27,8 +27,8 @@ const C = {
 function printBanner() {
   console.log(`
 ${C.cyan}${C.bright}========================================================================${C.reset}
-${C.green}${C.bright}  AGENT-FIREWALL // SEMANTIC AST COMMAND GATEWAY  v2.4.0${C.reset}
-${C.dim}  Autonomous AI Execution Guard & Zero-Trust Threat Neutralizer${C.reset}
+${C.green}${C.bright}  AGENT-FIREWALL // COMMAND PATTERN SAFETY GATEWAY  v2.4.0${C.reset}
+${C.dim}  Deterministic AI Execution Guard & SHA-256 Audit Logger${C.reset}
 ${C.cyan}${C.bright}========================================================================${C.reset}
 `);
 }

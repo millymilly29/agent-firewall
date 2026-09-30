@@ -78,5 +78,21 @@ test('Chain: Verifies single record with prevHash', () => {
   assert.strictEqual(logger.verifyRecord(r1), false);
 });
 
+// 5. Command text tampering detection across full chain
+test('Chain: Detects command text mutation in chain block', () => {
+  const logger = new AuditLogger();
+  logger.createAttestation('safe_cmd_1', 'ALLOWED', 'DEVELOPMENT', 0);
+  logger.createAttestation('safe_cmd_2', 'ALLOWED', 'DEVELOPMENT', 0);
+  logger.createAttestation('safe_cmd_3', 'ALLOWED', 'DEVELOPMENT', 0);
+
+  // Alter command text without recalculating commandHash
+  logger.ledger[1].command = 'rm -rf / --no-preserve-root';
+
+  const check = logger.verifyChain();
+  assert.strictEqual(check.valid, false);
+  assert.strictEqual(check.tamperedIndex, 1);
+  assert(check.reason.includes('Command text mismatch'));
+});
+
 console.log(`\nCHAIN RESULTS: ${passed} passed, ${failed} failed.\n`);
 if (failed > 0) process.exit(1);

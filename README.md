@@ -75,10 +75,11 @@ SEC-005     chmod 777, sudo, chown root                      REQUIRE APPROVAL
 ### [ 01.4 ] KNOWN LIMITATIONS & THREAT BOUNDARY
 
 ```
-[ STATIC SCANNER ]    Deterministic regex AST scanner targeting high-entropy shell mutations.
-[ AUDIT INTEGRITY ]   Immutable SHA-256 chained hash: H_i = SHA-256(H_i-1 || Timestamp || Action).
-[ LIMITATION 01 ]     Static scanner does not execute base64 dynamic evaluation (echo ... | base64 -d).
-[ LIMITATION 02 ]     First layer of defense; must be paired with OS-level virtualization (gVisor/VM).
+[ STATIC SCANNER ]    Deterministic regex command pattern scanner targeting high-entropy shell mutations.
+[ AUDIT INTEGRITY ]   Forward SHA-256 hash chain: H_i = SHA-256(H_{i-1} || Timestamp || CommandHash || Verdict || Policy || RiskScore).
+[ LIMITATION 01 ]     Regex scanner does not execute base64 dynamic evaluation (e.g. echo ... | base64 -d | bash).
+[ LIMITATION 02 ]     Tail truncation: deleting the most recent audit records cannot be detected from the local chain alone without checking against an external head-hash checkpoint.
+[ LIMITATION 03 ]     First layer of defense; must be paired with OS-level virtualization (gVisor/VM/containers).
 ```
 
 ---

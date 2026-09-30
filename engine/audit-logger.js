@@ -146,12 +146,7 @@ class AuditLogger {
     // Check with prevHash
     const chainedPayload = `${prev}|${record.timestamp}|${record.commandHash}|${record.verdict}|${record.policy}|${record.riskScore}`;
     const chainedHash = computeDigest(chainedPayload);
-    if (chainedHash === (record.hash || record.signature)) return true;
-
-    // Legacy unchained fallback
-    const legacyPayload = `${record.timestamp}|${record.commandHash}|${record.verdict}|${record.policy}|${record.riskScore}`;
-    const legacyHash = computeDigest(legacyPayload);
-    return legacyHash === (record.hash || record.signature);
+    return chainedHash === (record.hash || record.signature);
   }
 
   /**
@@ -174,6 +169,15 @@ class AuditLogger {
           valid: false,
           tamperedIndex: i,
           reason: `Broken chain link at index ${i}: prevHash mismatch (expected ${expectedPrevHash}, got ${record.prevHash})`
+        };
+      }
+
+      // Verify command text matches commandHash
+      if (record.command && computeDigest(record.command) !== record.commandHash) {
+        return {
+          valid: false,
+          tamperedIndex: i,
+          reason: `Command text mismatch at index ${i}`
         };
       }
 
