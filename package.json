@@ -25,12 +25,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/millymilly29/agent-firewall.git"
+    "url": "git+https://github.com/therealfullmetal55555/agent-firewall.git"
   },
   "bugs": {
-    "url": "https://github.com/millymilly29/agent-firewall/issues"
+    "url": "https://github.com/therealfullmetal55555/agent-firewall/issues"
   },
-  "homepage": "https://github.com/millymilly29/agent-firewall#readme",
+  "homepage": "https://github.com/therealfullmetal55555/agent-firewall#readme",
   "engines": {
     "node": ">=18.0.0"
   }
